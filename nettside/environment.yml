@@ -1,0 +1,11 @@
+name: icvassboassignment6
+channels:
+    - conda-forge
+dependencies:
+    - python=3.8.5
+    - pylint=2.6.0
+    - pandas=1.1.3
+    - altair=4.1.0
+    - flask=1.1.2
+    - sphinx
+    - make=4.2.1

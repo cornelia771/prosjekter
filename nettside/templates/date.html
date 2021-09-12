@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filter plots by date</title>
+</head>
+<body>
+    <form action="handle_date" method="POST">
+        <label>
+            Start date: <br>
+            <input type="date" name="start_date">
+        </label>
+        <br>
+        <label>
+            End date:<br>
+            <input type="date" name="end_date">
+        </label>
+        <br>
+        <select name="all_counties">
+            <option value="allcounties">All Counties</option>
+            <option value="agder">Agder</option>
+            <option value="innlandet">Innlandet</option>
+            <option value="moreogromsdal">More Og Romsdal</option>
+            <option value="nordland">Nordland</option>
+            <option value="oslo">Oslo</option>
+            <option value="rogeland">Rogeland</option>
+            <option value="tromsogfinnmark">Troms og Finnmark</option>
+            <option value="trondelag">Trondelag</option>
+            <option value="vestfoldogtelemark">Vestfold og Telemark</option>
+            <option value="vestland">Vestland</option>
+            <option value="viken">Viken</option>
+        </select>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

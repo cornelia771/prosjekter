@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Covid-19 Plots API &#8212; Assignment 6 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Assignment 6’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-web_visualization">
+<span id="covid-19-plots-api"></span><h1>Covid-19 Plots API<a class="headerlink" href="#module-web_visualization" title="Permalink to this headline">¶</a></h1>
+<p>The user of those methods should be able to control at least the following:
+Which county, if not ”all counties” to plot the data from - optional argument
+the time range to be plotted e.g. Start = "21/02/2020” End = ”09/09/2021”
+- optional argument 4</p>
+<dl class="py function">
+<dt id="web_visualization.both">
+<code class="sig-prename descclassname">web_visualization.</code><code class="sig-name descname">both</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web_visualization.both" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the functions plot_cumulative_cases, plot_reported_cases and plot_both, to combine
+all plots and saves them.
+&#64;return: the plot template</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="web_visualization.date">
+<code class="sig-prename descclassname">web_visualization.</code><code class="sig-name descname">date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web_visualization.date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the date page
+&#64;return: the html we want to see on given site</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="web_visualization.fix_dates">
+<code class="sig-prename descclassname">web_visualization.</code><code class="sig-name descname">fix_dates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dmy_date</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#web_visualization.fix_dates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change day/month/year date to year-month-day
+&#64;param dmy_date: string with date, on day-month-year
+&#64;return: the date-string with right format
+”29/03/2020”</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="web_visualization.get_data">
+<code class="sig-prename descclassname">web_visualization.</code><code class="sig-name descname">get_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">county</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#web_visualization.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the data set for the given county
+&#64;param county: The county we want to get the data on
+&#64;return: The county as a pandas dataframe</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="web_visualization.handle_date">
+<code class="sig-prename descclassname">web_visualization.</code><code class="sig-name descname">handle_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web_visualization.handle_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the user input to take inn start_date, end_date and which county we want to see.
+&#64;return: the template with plot.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="web_visualization.plot_both">
+<code class="sig-prename descclassname">web_visualization.</code><code class="sig-name descname">plot_both</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">county</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">start</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; altair.vegalite.v4.api.Chart<a class="headerlink" href="#web_visualization.plot_both" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines the plots from the the functions plot_reported_cases
+and plot_cumulative_cases into a new plot.
+&#64;param county: string, which county we should get data from
+&#64;param start: string, the start date
+&#64;param end: string, the end date
+&#64;return: the combined plot</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="web_visualization.plot_cumulative_cases">
+<code class="sig-prename descclassname">web_visualization.</code><code class="sig-name descname">plot_cumulative_cases</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">county</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">start</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; altair.vegalite.v4.api.Chart<a class="headerlink" href="#web_visualization.plot_cumulative_cases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses pandas to get info from data, and uses altair to create a line plot.
+&#64;param county: string, which county we should get data from
+&#64;param start: string, the start date
+&#64;param end: string, the end date
+&#64;return: the line plot</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="web_visualization.plot_reported_cases">
+<code class="sig-prename descclassname">web_visualization.</code><code class="sig-name descname">plot_reported_cases</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">county</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">start</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; altair.vegalite.v4.api.Chart<a class="headerlink" href="#web_visualization.plot_reported_cases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses pandas to get info from data, and uses altair to make a bar plot.
+&#64;param county: string, which county we should get data from
+&#64;param start: string, the start date
+&#64;param end: string, the end date
+&#64;return: the bar plot</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="web_visualization.send_docs">
+<code class="sig-prename descclassname">web_visualization.</code><code class="sig-name descname">send_docs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#web_visualization.send_docs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Static file hosting for the sphinx docs
+:param path: file within docs/_build_html</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The requested file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="web_visualization.show_county_plot">
+<code class="sig-prename descclassname">web_visualization.</code><code class="sig-name descname">show_county_plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#web_visualization.show_county_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the start page
+&#64;return: The html code we want to see</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Assignment 6</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Covid-19 Plots API</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Assignment 6’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Ingrid Cornelia Drougge Vassbotn.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/api.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
